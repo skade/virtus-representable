@@ -1,6 +1,6 @@
 # Virtus::Representable
 
-A quick and dirty code spike to generate Representable decorator out of a Virtus tree without typing too much.
+A quick and dirty code spike to generate Representable decorators out of a Virtus tree without typing too much.
 
 Currently only on a "I need that" basis.
 
