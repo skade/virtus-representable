@@ -38,7 +38,7 @@ module Virtus
         end
 
         def decorator_class(attribute)
-          parent.const_get("#{class_name(attribute)}")
+          parent.const_get("#{class_name(attribute)}", false)
         end
       end
 
