@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Virtus::Representable::VERSION
   spec.authors       = ["Florian Gilcher"]
   spec.email         = ["florian.gilcher@asquera.de"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{A glue layer to make working with large Virtus trees and Representable easier.}
+  spec.summary       = %q{Virtus and Representable, sitting in a tree}
   spec.homepage      = ""
   spec.license       = "MIT"
 
