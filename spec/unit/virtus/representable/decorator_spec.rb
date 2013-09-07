@@ -1,7 +1,9 @@
+# encoding: utf-8
+
 require 'spec_helper'
 require 'representable/hash'
 
-describe Virtus::Representable::Decorator, "#to_hash" do
+describe Virtus::Representable, '#to_hash' do
   class B
     include Virtus
 
@@ -17,14 +19,14 @@ describe Virtus::Representable::Decorator, "#to_hash" do
 
   module Decorators
     class B < Representable::Decorator
-      include Virtus::Representable::Decorator
+      include Virtus::Representable
       include Representable::Hash
 
       represent ::B
     end
 
     class A < Representable::Decorator
-      include Virtus::Representable::Decorator
+      include Virtus::Representable
       include Representable::Hash
 
       represent ::A
@@ -33,33 +35,32 @@ describe Virtus::Representable::Decorator, "#to_hash" do
 
   module OnlyDecorators
     class B < Representable::Decorator
-      include Virtus::Representable::Decorator
+      include Virtus::Representable
       include Representable::Hash
 
       represent ::B
     end
 
     class A < Representable::Decorator
-      include Virtus::Representable::Decorator
+      include Virtus::Representable
       include Representable::Hash
 
-      represent ::A, :only => [:b]
+      represent ::A, only: [:b]
     end
   end
 
-  subject {
-    decorators.new(value).to_hash
-  }
+  subject { decorators.new(value).to_hash }
+
   let(:value) { A.new(hash) }
-  let(:hash)  { { 'a' => "string", 'b' => { 'b' => "string" } } }
+  let(:hash)  { { 'a' => 'string', 'b' => { 'b' => 'string' } } }
   let(:decorators) { Decorators::A }
 
   it { should be_kind_of(Hash) }
   it { expect(hash).to eq(hash) }
 
-  describe "with ignored attributes" do
+  describe 'with ignored attributes' do
     let(:decorators) { OnlyDecorators::A }
-    let(:expected_hash) { { 'b' => { 'b' => 'string'} } }
+    let(:expected_hash) { { 'b' => { 'b' => 'string' } } }
 
     it { expect(hash).to eq(hash) }
   end

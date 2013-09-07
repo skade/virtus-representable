@@ -18,12 +18,17 @@ DataClump:
   min_clump_size: 2
 DuplicateMethodCall:
   enabled: true
-  exclude: []
+  exclude: [
+    "Virtus::Representable::ClassMethods#class_name"
+  ]
   max_calls: 1
   allow_calls: []
 FeatureEnvy:
   enabled: true
-  exclude: []
+  exclude: [
+    "Virtus::Representable::ClassMethods#class_name",
+    "Virtus::Representable::ClassMethods#extract_attribute_names"
+  ]
 IrresponsibleModule:
   enabled: true
   exclude: []
@@ -62,7 +67,7 @@ TooManyStatements:
   enabled: true
   exclude:
   - each
-  max_statements: 2
+  max_statements: 4
 UncommunicativeMethodName:
   enabled: true
   exclude: []
@@ -99,5 +104,7 @@ UnusedParameters:
   exclude: []
 UtilityFunction:
   enabled: true
-  exclude: []
-  max_helper_calls: 0
+  exclude: [
+    "Virtus::Representable::ClassMethods#class_name"
+  ]
+  max_helper_calls: 1
